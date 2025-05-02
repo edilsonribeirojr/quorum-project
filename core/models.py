@@ -2,9 +2,9 @@ from tkinter.font import names
 
 from django.db import models
 
-class Person:
-    def __init__(self, person_id, name):
-        self.person_id = person_id
+class Legislator:
+    def __init__(self, legislator_id, name):
+        self.legislator_id = legislator_id
         self.name = name
         self.supported_bills = 0
         self.opposed_bills = 0

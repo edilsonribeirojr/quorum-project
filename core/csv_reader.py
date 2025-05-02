@@ -1,12 +1,12 @@
 import csv
-from .models import Person, Bill, Vote, VoteResult
+from .models import Legislator, Bill, Vote, VoteResult
 
 def load_persons(file_path):
     persons = []
     with open(file_path, newline='', encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            person = Person(int(row['id']), row['name'])
+            person = Legislator(int(row['id']), row['name'])
             persons.append(person)
     return persons
 
