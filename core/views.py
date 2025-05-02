@@ -39,11 +39,12 @@ def count_votes_for_legislator(legislator_id, vote_results):
     return supported_bills, opposed_bills
 
 
-def count_votes_for_bill(bill_id, vote_results):
+def count_votes_for_bill(bill_id, vote_results, votes):
     supporters = 0
     opposers = 0
     for result in vote_results:
-        if result.vote_id == bill_id:
+        bill_id_from_result = result.get_bill_id(votes)
+        if bill_id_from_result == bill_id:
             if result.vote_type == 1:
                 supporters += 1
             elif result.vote_type == 2:
@@ -55,12 +56,13 @@ def dashboard(request):
     legislators = load_persons('data/legislators.csv')
     bills = load_bills('data/bills.csv')
     vote_results = load_vote_results('data/vote_results.csv')
+    votes = load_votes('data/votes.csv')
 
     for legislator in legislators:
         legislator.supported_bills, legislator.opposed_bills = count_votes_for_legislator(legislator.legislator_id, vote_results)
 
     for bill in bills:
-        bill.supporters, bill.opposers = count_votes_for_bill(bill.bill_id, vote_results)
+        bill.supporters, bill.opposers = count_votes_for_bill(bill.bill_id, vote_results, votes)
 
 
     return render(request, 'core/dashboard.html', {'legislators': legislators, 'bills': bills})

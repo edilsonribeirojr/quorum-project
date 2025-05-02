@@ -11,7 +11,7 @@
     <tbody>
         {% for legislator in legislators %}
         <tr>
-            <td>{{ legislator.id }}</td>
+            <td>{{ legislator.legislator_id }}</td>
             <td>{{ legislator.name }}</td>
             <td>{{ legislator.supported_bills }}</td>
             <td>{{ legislator.opposed_bills }}</td>
@@ -34,11 +34,11 @@
     <tbody>
         {% for bill in bills %}
         <tr>
-            <td>{{ bill.id }}</td>
+            <td>{{ bill.bill_id }}</td>
             <td>{{ bill.title }}</td>
             <td>{{ bill.supporters }}</td>
             <td>{{ bill.opposers }}</td>
-            <td>{{ bill.primary_sponsor }}</td>
+            <td>{{ bill.primary_sponsor.name }}</td>
         </tr>
         {% endfor %}
     </tbody>

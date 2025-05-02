@@ -19,7 +19,7 @@ class Bill:
 
 class Vote:
     def __init__(self, vote_id, bill_id):
-        self.vote_id = vote_id,
+        self.vote_id = vote_id
         self.bill_id = bill_id
         self.vote_result = []
 
@@ -29,5 +29,11 @@ class VoteResult:
         self.legislator_id = legislator_id
         self.vote_id = vote_id
         self.vote_type = vote_type
+
+    def get_bill_id(self, votes):
+        for vote in votes:
+            if vote.vote_id == self.vote_id:
+                return vote.bill_id
+        return None
 
 
