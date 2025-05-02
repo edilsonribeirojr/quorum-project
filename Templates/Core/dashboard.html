@@ -1,0 +1,48 @@
+<!-- core/templates/core/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quorum Dashboard</title>
+</head>
+<body>
+    <h1>Legislator Statistics</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Supported Bills</th>
+            <th>Opposed Bills</th>
+        </tr>
+        {% for person in persons %}
+        <tr>
+            <td>{{ person.person_id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.supported_bills }}</td>
+            <td>{{ person.opposed_bills }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Bill Statistics</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Supporters</th>
+            <th>Opposers</th>
+            <th>Primary Sponsor</th>
+        </tr>
+        {% for bill in bills %}
+        <tr>
+            <td>{{ bill.bill_id }}</td>
+            <td>{{ bill.title }}</td>
+            <td>{{ bill.supporters }}</td>
+            <td>{{ bill.opposers }}</td>
+            <td>{{ bill.primary_sponsor_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
