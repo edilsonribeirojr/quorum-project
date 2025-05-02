@@ -1,5 +1,5 @@
 import csv
-from models import Person, Bill, Vote, VoteResult
+from .models import Person, Bill, Vote, VoteResult
 
 def load_persons(file_path):
     persons = []
@@ -16,7 +16,7 @@ def load_bills(file_path):
     with open(file_path, newline='', encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            bill = Bill(int(row['id']), row['title'], int(row['Primary Sponsor']))
+            bill = Bill(int(row['id']), row['title'], int(row['sponsor_id']))
             bills.append(bill)
     return bills
 
@@ -39,6 +39,7 @@ def load_vote_results(file_path):
             vote_result = VoteResult(
                 int(row['id']),
                 int(row['legislator_id']),
+                int(row['vote_id']),
                 int(row['vote_type'])  # 1 for yea, 2 for nay
             )
             vote_results.append(vote_result)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from csv_reader import load_persons, load_bills, load_votes, load_vote_results
+from .csv_reader import load_persons, load_bills, load_votes, load_vote_results
 
 def load_all_data():
     persons = load_persons('data/legislators.csv')
